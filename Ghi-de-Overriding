@@ -1,0 +1,11 @@
+- lớp con có thể ghi đè (overriding) các phương thức của lớp cha cho phép để định nghĩa hành vi riêng của nó. ghi đè ở đây, một là nó định nghĩa đè lên  xóa hết các phương thức trước, thêm các phương thức mới hoặc nó giữ nguyên các phương thức trước và thêm các phương thức mới
+
+- khi ghi đè chú ý:
+	+ tên phương thức ghi đè  và phương thức trước phải giống nhau
+	+ danh sách tham số và kiểu của tham số phải giống nhau (tên tham số khác nhau bình thường)
+	+ kiểu dữ liệu trả về phải giống nhau
+	+ phạm vi truy cập không nhất thiết giống nhau, nhưng ở lớp con phải dùng cái có phạm vi truy cập lớn hơn hoặc bằng cha (ví dụ: public > protected)
+	
+- overriding chỉ dùng trong quan hệ kế thừa
+
+- không thể ghi đè phương thức final

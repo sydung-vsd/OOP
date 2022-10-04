@@ -1,0 +1,58 @@
+- kế thừa giúp cho việc tái sử dụng code, giúp cho việc mở rộng chương trình
+
+- kế thừa (inheritance) có nghĩa là môt lớp kế thừa được các phương thức và thuộc tính của lớp khác
+
+- cách làm: phân tích coi 2 lớp có điểm gì chung, rồi tách những cái điểm chung đó ra một lóp khác, rồi cho các lớp con kế thừa lại và các lớp con chỉ  giữ nhứng cái riêng nó
+
+- lớp B kế thừa lại lớp A:  class B extends A {}
+
+- java là đơn kế thừa, và có thể con kế thừa cha, cha kế thừa ông nội
+
+- khi khai báo một lớp là final --> không một lớp nào được kế thừa cái lớp đó nữa vì nó là cuối cùng (ví dụ, cung cấp một thưu viện cho nơi khác sử dụng tránh tình trạng người ta ghi đè, sửa lại cái của mình thì chúng ta khai báo final)
+
+- một lớp khai báo mà không cho nó kế thừa lớp nào thì ngầm định nó kế thừa lớp Object
+
+- phương thức private của lớp cha không được kế thừa ở lớp con
+- phương thức tĩnh vẫn được kế thừa ở lớp con
+
+- phương thức khởi tạo không được kế thừa ở lớp con
+- ở lớp con khi tạo phương thức khởi tạo nó luôn luôn gọi phương thức khởi tạo của lớp cha ( trong phương thức khởi tạo của lớp con phải gọi phương thức khưởi tạo của lớp cha)
+- thứ tụ các phương thức khởi tạo được gọi là từ các lớp cha trước rồi đến lớp con
+- các phương thức khởi tạo lớp con phải gọi phương thức khởi tạo lớp cha, nếu không java sẽ ngầm định gọi phương thức khởi tạo không tham số của lớp cha (trong trường hợp không khai báo phương thức khởi tạo không tham số, chương trình sẽ báo lỗi). Để chương trình không gọi ngầm định thì ta thêm từ khóa supper để gọi tường minh phương thức khởi tạo nào đó của lớp cha
+
+- lớp ở gói khác khau kế thừa nhau được miễn là import vào
+
+- khi cho một lớp con kế thừa lớp cha thì được phép lấy lớp cho làm một kiểu để  khia báo  object con, kiểu biến của lớp cha, new ra đối tượng của lớp con, ngược lại thì sai
+	ví dụ: class A {
+			}
+			class B extends A {
+			}
+			
+		--> A obj = new B();
+			obj.show(); --> chú ý: khi tạo obj lấy cha làm kiểu dữ liệu, thì khi biên dịch code,nếu phương thức show() được overriding ở lớp con thì nó sẽ chạy của thằng con, nếu không được overriding thì cái phương thức show() sẽ tìm ở thằng cha trước, nếu thằng cha (nếu thằng cha có, mà nó là private thì báo lỗi), không có mới tìm xuống thằng con. còn nếu tạo obj bình thường, tức thằng con làm kiểu dữ liệu, thì khi chạy nó sẽ ưu tiên ở thằng con trước, con không có nó mới tìm lên cha
+	
+
+
+---------------Từ Khóa Super---------------
+-lớp con muốn truy xuất vào các thuộc tính hoặc phương thức của lớp cha sử dụng từ khóa 'super'
+- gọi phương thức khởi tạo lớp cha: super([các đối số]) --> cú pháp này chỉ được dùng trong phương thức khởi tạo mà phải ở dòng đầu tiên
+
+- gọi phương thức và thuộc tính của lớp cha:
+	super.tên-thuộc-tính;
+	super.tên-phương-thức-lớp-cha([các đối số]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,218 @@
+- lớp (class) là một khuôn mẫu (template) để định nghĩa các thuộc tính (properties) và hành vi (behaviors) của các thực thể
+
+- trong một file chỉ duy nhất một class được khai báo public và lớp đó bắt buộc phải trùng với tên file, trong lớp pubic đó có thể khai báo nhiều lớp khác nhưng không được gắn public vào
+
+- các thuộc tính của lớp dùng để lưu trữ thông tin của thực thể: syntax:
+	[accessModifier] kiểu-dữ-liệu tên-thuộc tính;
+	+ accessModifier là phạm vi truy cập
+		. private: thuộc tính đó chỉ được phép truy cập bên trong các phương thức của lớp đó thôi
+		. public: ngoài các phương thức trong cái lớp đang khai báo thì tất cả các lớp trong project gọi tới đều dùng được
+		. protected: áp dụng cho quan hệ kế thừa là chính, cho phép truy cập trong lớp, các lớp cùng gói và các lớp con kế thừa lớp chứa chúng 
+		. default: truy cập được trong lớp đó và các lớp trong cùng gói ( tức là các lớp nằm ngoài gói chứa nó thì không truy cập được)
+		
+	ví dụ: 1. public class SinhVien {
+				private String maSo;
+				private String hoTen;
+				private boolean daTotNghiep;
+			}
+			
+			2. public class PhanSo {
+				private int tuSo;
+				private int mauSo;
+			}
+			
+			
+- lớp được khai báo public thì các anh em trong package và các lớp ở package khác cũng có thể thấy. còn nếu không có public thì chỉ anh em trong package mới thấy
+
+- việc sửa đổi hoặc lấy dữ liệu từ thuộc tính ra đều phải thông qua các phương thức getter/setter
+
+- các lớp trong một gói gọi sử dụng lẫn nhau không cần import (tức là muốn tạo một object PhanSo trong class TamGiac chỉ cần new PhanSo mà không phải import
+- việc sử dụng các lớp ngoài gói thì pahri import vào: import tên-gói.tên-file
+
+- phương thức thể hiện hành vi của thực thể
+- các loại phương thức:
+	+ phương thức thường: getter-để lấy giá trị thuộc tinh và setter-để sửa đổi giá trị thuộc tính. Việc lấy và sửa đổi thuộc tính phải qua hai cái này
+	+ phương thức khởi tạo: là phương thức sẽ được gọi dầu tiên khi tạo đối tượng. Trong một lớp bắt buộc có phương thức khởi tạo, nếu không tạo ra thì nó sẽ tự tạo mặc định
+	
+- syntax khai báo phương thức:
+	[accessModifier] kiểu-dữ-liệu-trả-về tên-phương-thức [tham-số];
+	+ thường các phương thức thường được gắn public
+	
+	ví dụ:  public class PhanSo {
+				public PhanSo rutGon() {}
+				public PhanSo cong(PhanSo p){}
+				public void hienThi() {}
+			}
+			
+- tên phương thức gettter/setter: getTenThuocTinh()/setTenThuocTinh([tham-số])
+
+	ví dụ: class SinhVien {
+				private String hoTen;
+				private boolean daTotNghiep;
+				public String getHoTen() {
+					return hoTen;
+				}
+				public void setHoTen(String hoTenMoi) {
+					hoTen = hoTenMoi;
+				}
+				public boolean isDaTotNghiep() {
+					return daTotNghiep;
+				}
+				public void setDaTotNghiep(boolean daTotNghiepMoi) {
+					daTotNghiep = daTotNghiepMoi;
+				}
+			}
+	
+- phương thức khởi tạo (constructor) được gọi đầu tiên khi tạo đối tượng
+	+ tên phương thức khởi tạo trùng với tên lớp, bắt đầu bằng ký tự hoa
+	+ không có kiểu dữ liệu trả về
+	+ một class có thể có nhiều phương thức khởi tạo, phương thức khởi tạo 0/1/2/3/nhiều tham số
+	+ syntax: [accessModifier] tên-lớp([tham-số]);	
+	
+	ví dụ: public class PhanSo {
+				private int tuSo;
+				private int mauSo;
+				public PhanSo () {
+					mauSo = 0;
+					tuSo = 1;
+				}
+				public PhanSo (int tu, int mau) {
+					mauSo = mau;
+					tuSo = tu;
+				}
+			}
+			
+			=> PhanSo p = new PhanSo(); --> tạo ra phân số có tử 0, mẫu 1
+			=> PhanSo p = new PhanSo(3,5); --> tạo ra phân số có tử 3, mẫu 5
+			
+- trong lập trình hướng đối tượng, ví dụ khi tạo một đối tượng phân số từ lớp PhanSo và đối tượng đó gọi phương thức congPhanSo trong lớp PhanSo thì đối tượng gọi đó bản thân nó đã là một tham số (trương hợp cộng 2 phân số thì chỉ cần truyền vào một phân số, 3 thì truyền 2). cái tham số trỏ đến chính dối tượng đang gọi con trỏ đó gọi là con trỏ this
+
+- Đối tượng là 1 thể hiện của class
+
+- java luôn dùng truyền trị(túc là nó không truyền tham chiếu, dù cho mảng là giá trị tham chiếu) để truyền các đối số vào phương thức. nếu truyền một giá trị kiểu nguyên thủy thì nó sẽ lấy cái giá trị đó nó bỏ vô, còn nếu truyền tham chiều thì nó sẽ sao chép cái giá trị tham chiếu nó bỏ vô chứ không truyền tham chiếu 
+
+- khi phương thức kết thúc stack sẽ tự động giải phóng (vẽ sơ đồ heap-stack để hình dung)
+
+- trong java cho phép sử dụng thí để gọi phương thức khởi tạo trong một phương thức khởi tạo khác
+	ví dụ: public class PhanSo {
+				private int tuSo, mauSo;
+				public PhanSo(int tu, int mau){
+					this.tuSo = tu;
+					this.mauSo  = mau;
+				}
+				public PhaanSo (){
+					// trong một phương thức khởi tạo dùng cú pháp this(0,1) tức là đang gọi tới một phương thức khởi tạo có hai tham số khác, cú phảp này chỉ được dùng trong phương thức khởi tạo và phải để ở dòng đầu tiên nếu dòng 2 3 sẽ lỗi
+					this(0, 1);
+				}
+			}
+			
+- mỗi đối tượng có thuộc tính riêng tức là khi tạo một đối tượng mới thì class chạy lại từ đầu, các giá trị khi tạo đối tượng trước không ảnh hưởng đến giá trị đối tượng tạo sau
+
+
+-------------THUỘC TÍNH VÀ PHƯƠNG THỨC TĨNH-----------------
+
+- static
+- thuộc tính tĩnh hoặc phương thức tĩnh, là cái dùng chung cho tất cả dối tượng được tạo ra từ class. cái thằng tĩnh bị thay đổi thì các đối tượng trong class đều chịu sự thay đổi đó
+
+- thuộc tính hoặc phương thức tĩnh được gọi sử dụng thông qua tên lớp mà không cần tạo đối tượng, tức là dùng trực tiếp tên lớp để gọi
+	ví dụ: Math.sqrt() -->Math ở đây là một class không phải đối tượng
+
+- trong phương thức tĩnh chỉ truy xuất được các thuộc tính hoặc phương thức tĩnh của lớp, không truy cập đươc vào các thuộc tính hoặc phương thức không phải tĩnh (tức không truy cập được cả this)
+- các phương thức thông thường có thể truy xuất được đến các thuộc tính phương thức tĩnh, còn ngược lại thì không được
+- phương thức tĩnh không có this vì những phương thức nào riêng từng đối tượng mới có this
+
+	ví dụ khai báo thuộc tính và phương thức tĩnh:
+		public class PhanSo {
+			private static int soLuongPs = 0;
+			public static int timUcln (int a, int b){
+			}
+		}
+		=> ta gọi phương thức timUcln() bằng cách: int ucln = PhanSo.timUcln(12, 8);   giống với dùng Math
+		
+- chú ý: chỉ cái nào dùng chung mới để static, chứ không lạm dụng
+
+
+---------------Initialization Block---------------
+- để khởi động giá trị thuộc tính có thể
+	+ hoặc là gán lúc khai báo
+	+ hoặc trong phương thức khởi tạo
+	+ hoặc initialization block
+	
+- Initialization block: khối này được goi mỗi khi một đối tượng được tạo (gọi trước cả các phương thức khởi tạo)
+- trong quá trình tạo phương thức khởi tạo sẽ có  những cái khởi động giữa những phương thức khởi tạo trùng nhau vì vậy nên chú ý cái initialization block ( ví dụ biến đếm số phân số được khởi tạo, tức là mỗi lần gọi phương thức khởi tạo ta tăng biến đó lên 1 lần, thay vì phải viết vào từng phương thức khởi tạo thì ta để nó trong initialization block) 
+	ví dụ: public class PhanSo {
+				private static int demPhanSo = 0;
+				private int tuSo;
+				private int mauSo;
+					// đây là initialization block
+					{
+						demPhanSo++;
+					}
+					
+				public PhanSo rutGonPhanSo () {
+					int ucln = PhanSo.timUcln(this.tuSo, this.mauSo);
+					int t = this.tuSo/ucln;
+					int m = this.mauSo/ucln;
+					return new PhanSo(t,m);		
+				}
+				
+				public static int timUcln (int a, int b) {
+					while (a != b) {
+						if(a > b) {
+							a-=b;
+						} else {
+							b-=a; 
+						}
+					}
+					return a;
+				}
+				
+				public PhanSo () {
+					mauSo = 1;
+					tuSo = 0;
+				}
+				
+				public PhanSo (int t) {
+					mauSo = 1;
+					tuSo = t;
+				}
+			}
+
+---------------Package (Gói)---------------
+- package dùng để gom nhóm các lớp, giao diện và các gói con khác
+
+- mục đích chính sử dụng gói là đảm bảo tính duy nhất trong tên lớp
+
+- các gói chuẩn trong java nằm trong hai gói 'java' và 'javax'
+
+- muốn sử dụng một lớp thuộc gói khác thì:
+	+ Dùng đầy đủ tên lớp
+		java.util.Date today = new java.util.Date()
+	+ dùng lệnh import chỉ đến lớp đó ở trong gói
+		import java.util.Date;
+		Date today = new Date();
+	+ dùng ký hiệu * để import tất cả các lớp của gói
+		 import java.util.*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

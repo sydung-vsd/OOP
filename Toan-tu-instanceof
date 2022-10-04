@@ -1,0 +1,30 @@
+- toán tử instanceof dùng kiểm tra một đối tượng là thể hiện của lớp nào (new cái nào thì chính là instance của cái đó, kiểu dữ liệu không quan trọng)
+	 ví dụ: SanPham s1 = new Sach();
+	 			if(s1 instanceof Sach){
+	 			System.out.println(""true);
+	 			} else {
+	 				System.out.println("false");
+	 			}
+
+//----------lớp Object----------
+- toString(): trả về chuỗi đại diện cho đối tượng
+- equals(Object obj) kiểm tra hai đối tượng có bằng nhau
+- hashCode() trả về mẵ băm của đối tượng
+- clone() sao chép đối tượng ra đối tượng mới nhưng bộ nhớ trên heap khác nhau
+- getClass(): trả về lớp mà đối tượng được tạo ra
+
+- ví dụ: lớp SanPham ghi đè lại phương thức tooString()
+		class SanPham {
+			//...
+			@Override
+			public String toString() {
+			return String.format("- Mã SP: %s/n- Tên SP: %s/n", this.maSP, this.tenSP);
+			}
+		}
+		
+		--> sau khi đã override lại toString thì khi print cái object ra sẽ ra theo cái format mình mới override lại
+			SanPham sp = new Sach();
+			System.out.println(sp)
+
+
+
