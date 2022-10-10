@@ -1,0 +1,24 @@
+- Ngoại lệ (exception) là thuật ngữ chỉ tình huống bất thường xảy ra khi đang chạy chương trình (ví dụ: khi nhập liệu nextint() mà người dùng nhập vào  chuỗi hoặc không phải số nguyên
+- xử lý ngoại lệ nhằm cho phép chương trình xửa lý tình huống không mong muốn xảy ra và chương trình tiếp tục thực thi bình thường
+
+- có hai cách xử lý ngoại lệ:
+	+ try-catch: bắt và xử lý, tức là bắt được cái ngoại lệ và xử lý
+	+ khai báo: để khi biết ở đâu có thể xảy ra ngoại lệ thì mình gọi cái phương thức đó để sử dụng
+	
+- luồng:
+	try {
+		<try-lock>
+	} catch (exception-1) {
+		<catch-block>
+	} catch (exception-2) {
+		<catch-block>
+	} catch (exception-3) {
+		<catch-block>
+	} finaly {
+		<finaly-block>
+	}
+	
+	+ khi một dòng lệnh thực thi và có nghi ngờ nó có ngoại lệ thì bỏ những dòng lệnh đó vào <try-block>, giả sử trong <try-block> có ném ra ngoại lệ thì các dòng sau nó không được thực thi, khi đó nó sẽ tìm các khối catch coi cái nào đúng với ngoại lệ vừa xảy ra và nhảy vào đó xử lý, sau đó nó sẽ nhảy vào finaly
+	+ trong <try-block> có ngoại lệ hay không thì finaly đêu được gọi
+	+ khi khai báo các khối catch thì đi từ con đi xuống cha, vì nếu bỏ cha lên trên thì nó nhảy vào cha hết, vì cha có đầy đủ các instance, mỗi việc kiểm tra các instance của lớp con thì cha đúng hết, vì cha có quyền tham chiếu đến bất kì lớp con 
+	+ bắt ngoại lệ càng cụ thể, hiệu năng càng tốt

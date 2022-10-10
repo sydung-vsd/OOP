@@ -25,6 +25,25 @@
 		--> sau khi đã override lại toString thì khi print cái object ra sẽ ra theo cái format mình mới override lại
 			SanPham sp = new Sach();
 			System.out.println(sp)
+			
+- ví dụ: phương thức equals() và hashCode()
+	 	class SanPham {
+	 		//...
+	 		@Override
+	 		// ----- cái phương thức equals là phương thức chung do đó cái tham số 'obj' truyền vào có kiểu là 'Object' chứ không phải kiểu 'SanPham' hay 'BangDia' gì cả
+	 		public boolean equals (Object obj) {
+	 			// ----- equals có hai tham số, một là tham số this, và tham số thứ hai là tham số so sánh 'obj'-----
+	 			// ----- khi Override lại phương thức equals ở trong lớp nào thì cái 'obj' truyền vào là chính cái instance của cái lớp đó, do đó dòng đầu tiên khi Override lại phương thức equals  phải ép kiểu 'obj' về kiểu của lớp, để có thể lấy được các thuộc tính của nó
+	 			
+	 			SanPham sp = (SanPham) obj;
+	 			return this.maSP.toLowerCase().equals(sp.maSP.toLowerCase());
+	 		}
+	 		@Override
+	 		public int hashCode() {
+	 			int hash = 5;
+	 			hash = 97 * hash + Object.hashCode(this.maSp);
+	 			return hash;
+	 		}
 
 
 

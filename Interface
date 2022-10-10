@@ -1,0 +1,86 @@
+- giao diện ( interface ) là một kiến trúc giồng như lớp nhưng chỉ chứa:
+	+ các thuộc tính static hoặc final
+	+ các phương thức trừu tượng, tĩnh
+	
+- từ java 8, giao diện cho phép khai báo các phương thức mặc đinh ( phương thức có phần thân xử lý ).
+- từ java 9, giao diện cho phép khai báo phương thức 'private' chỉ được truy cập trong interface, thường là từ các phương thức mặc định của interface
+
+- interface chỉ định nghĩa ra tiêu chuẩn chung để cho các cái khác làm theo tiêu chuẩn đó
+
+- cú pháp khai báo  Interface:
+	AccessModifier interface teenInterface {
+		[các thuộc tính];
+		[các phương thức];  // tất cả các phương thức này đều là public và astract nếu không nói gì thêm, nếu gắn "default" thì nó có từ phiên bản thứ 8, nếu gắn "private" thì nó có từ phiên bản thứ 9
+	}
+	
+- 1 file java chỉ một 'Interface' được gắn public
+
+- lớp con phải hiện override lại tất cả các phương thức của Interface, nêu không override hết thì nó cũng thành lớp trừu tượng
+
+- giả sử có một interface A và trong interface này có phương thức chung(), cũng có interface B và trog này cũng có phương thức chung(), có một class C implement (hiện thực hóa) cả A và B cùng một lúc, khi đó C.chung() thì sẽ không phân biệt chung của  A hay của B vì cái chung() đó ở A và B đều không thực thi gì, nên không quan tâm của thằng nào
+
+- các interface được phép kế thừa lẫn nhau (interface A extends interface B thì nó có tất cả các phương thức của interface B vì tất cả đều public)
+- một lớp có thể implement nhiều interface cùng một lúc
+
+- lớp hiện thực interface chứ interface không kế thừa lớp
+
+- lớp trừu tượng và interface giồng nhau: đều không tạo được đối tượng. khác nhau: lớp trừu tượng được phép chứa các phương thức bình thường, còn interface thì tất cả đều là trừu tượng. một lớp không được phép kế thừa một lúc nhiều lớp trừu tượng nhưng một lớp có thể implement một lúc nhiều interface
+
+- cú pháp interface kế thừa interface:
+	 interface interface-name extends other-interface-name {
+	 	[<thực thi các phương thức interface>]
+	 }
+	 
+- hiên thực hóa interface (implement)
+ 	 class tên-lớp implements tên-interface {
+ 	 	 [<thực thi các phương thức interface>];
+ 	 }
+ 	 
+- khi override lại các phương thức của interface thì bắt buộc phải là 'public' vì trong interface các phương thức là public và  khi override lại thì cái phạm vi phải lớn hơn hoặc bằng
+
+- interface không có phương thức khởi tạo
+
+
+---------------Giao diện Comparable---------------
+- giao diện comparable dùng só sánh 2 đối tượng
+	 public interface Comparable<E> {
+	 	public int comparreTo (E obj);
+	 }
+	 
+- phương thức compareTo() chỉ định cách so sánh đối tượng hiện tại this và obj phương thức này trả về 
+	+ số dương: this > obj
+	+ số 0: this = obj
+	+ số âm: this < obj
+	
+	
+---------------Giao diện Cloneable---------------
+- giao diện 'Cloneable' dùng tạo bản sao các đối tượng
+ 	 public interface Cloneable {
+ 	 
+ 	 }
+ 	 
+ - sao chép đối tượng này ra đối tượng khác với nội dung giống hệt nhau nhưng đối tượng trên heap là khác nhau, tức cấp phát bộ nhớ mới luôn
+ 
+ - interface này trống rỗng không  có gì, nhưng phải implement này mới dùng được phương thức clone()
+ 
+ - keyword: shallow copy và deep copy
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 

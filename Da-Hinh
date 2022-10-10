@@ -1,0 +1,23 @@
+----------Lớp trừu tượng----------
+- lớp trừu tượng là một lớp mờ hồ, trừu tượng chưa có gì cụ thể, chính vì thế nó không thể tạo ra một đối tượng cụ thể
+- lớp trừu tượng như một cái khuôn mẫu để các lớp con có thể hiện thực lớp trừu tượng này đã định nghĩa
+- lớp trừu tượng định nghĩa ra những cái chung nhưng chẳng có gì cả, lớp con nào kế thừa và dùng nó thì phải override lại để hiện thực nó
+- để khai báo lớp trừu tượng:
+	 abstract class Tên-lớp {
+	 	//...
+	 }
+	 --> lớp này không thể new, nó có thể làm kiểu nhưng không thể khởi tạo đối tượng tức new
+	 
+	 
+----------Phương thức trừu tượng----------
+- final là phương thức không được ghi đè ở lớp con nó vẫn kế thừa bình thường
+
+- phương thức trừu tượng là phương thức không có phần thân thực thi, nó chỉ có phần khai báo, mà việc thực thi như thế nào nó được viết ở lớp con
+
+- để khai báo phương thức trừu tượng sử dụng từ khóa 'abstract' trước kiểu dữ liệu trả về
+
+- CHÚ Ý: + một lớp trừu tượng không bắt buộc có phương thức trừu tượng
+		 + nhưng một lớp có phương thức trừu tượng thì phải khai báo nó là lớp trừu tượng
+		 + khi lớp con kế thừa lớp trừu tượng thì nó phải override lại tất cả các phương thức trừu tượng của lớp trừu tượng nó kế thừa, nếu lớp con không override lại tất cả các phương thức trừu tượng thì lớp con đó cũng trở thành lớp trừu tượng
+		 + lớp trừu tượng vẫn chứa được cả các phương thức bình thường
+
